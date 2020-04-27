@@ -19,7 +19,6 @@ class JokeList extends React.Component {
 		if (this.state.jokesList.length === 0) {
 			this.getJokes();
 		}
-		console.log('state', this.state);
 	}
 
 	async getJokes() {
@@ -70,7 +69,7 @@ class JokeList extends React.Component {
 
 	handleClearClick = () => {
 		window.localStorage.clear();
-		this.setState({ jokesList: [] }, this.getJokes);
+		this.setState({ jokesList: [], loading: true }, this.getJokes);
 	};
 
 	render() {
@@ -81,22 +80,26 @@ class JokeList extends React.Component {
 				</div>
 			);
 		}
+
+		let sortedJokes = [...this.state.jokesList].sort(
+			(a, b) => b.votes - a.votes
+		);
 		return (
 			<div className='container'>
 				<div className='sidebar'>
 					<h1 className='title'>Dad Jokes</h1>
 					<img src={image} alt='dad-illustration' />
-					<button className='more-button' onClick={this.handleClick}>
+					<button onClick={this.handleClick}>
 						Add more jokes
 					</button>
-					<button className='more-button' onClick={this.handleClearClick}>
+					<button onClick={this.handleClearClick}>
 						Refresh jokes
 					</button>
 				</div>
 
 				<div className='content-container'>
 					<div className='joke-list'>
-						{this.state.jokesList.map((joke) => (
+						{sortedJokes.map((joke) => (
 							<Joke key={joke.id} joke={joke} handleVote={this.handleVote} />
 						))}
 					</div>
