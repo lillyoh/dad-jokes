@@ -1,0 +1,46 @@
+.container {
+	display: flex;
+	width: 80%;
+	height: 80%;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 30%;
+	text-align: center;
+	border-radius: 5px;
+	background: #f3c5e3;
+	box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
+	z-index: 2;
+}
+
+.joke-list {
+	height: 90%;
+	background: white;
+	align-self: center;
+	width: 70%;
+	overflow: scroll;
+	box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
+}
+
+.title {
+	font-size: 4rem;
+	margin: 2rem;
+	color: rgb(211, 39, 39);
+	font-weight: strong;
+	letter-spacing: 0.2rem;
+	line-height: 4rem;
+	-webkit-text-stroke-color: rgb(255, 242, 242);
+	-webkit-text-stroke-width: 2px;
+}
+
+.sidebar img {
+	width: 90%;
+}
+
+button {
+	margin: 2rem;
+}
