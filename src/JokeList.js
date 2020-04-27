@@ -6,12 +6,20 @@ import './JokeList.css';
 
 class JokeList extends React.Component {
 	static defaultProps = {
-		numJokes: 10,
+		numJokes: 6,
 	};
 
-	state = { jokesList: [] };
+	state = {
+		jokesList: JSON.parse(window.localStorage.getItem('jokes') || '[]'),
+	};
 
-	async componentDidMount() {
+	componentDidMount() {
+		if (this.state.jokesList.length === 0) {
+			this.getJokes();
+		}
+	}
+
+	async getJokes() {
 		let jokesList = [];
 		while (jokesList.length < this.props.numJokes) {
 			let res = await axios.get('https://icanhazdadjoke.com/', {
@@ -22,14 +30,26 @@ class JokeList extends React.Component {
 			jokesList.push({ id: res.data.id, text: res.data.joke, votes: 0 });
 		}
 		this.setState({ jokesList: jokesList });
+		window.localStorage.setItem('jokes', JSON.stringify(jokesList));
 	}
 
 	handleVote = (jokeId, delta) => {
-		this.setState({
-			jokesList: this.state.jokesList.map((joke) =>
-				joke.id === jokeId ? { ...joke, votes: joke.votes + delta } : joke
-			),
-		});
+		this.setState(
+			{
+				jokesList: this.state.jokesList.map((joke) =>
+					joke.id === jokeId ? { ...joke, votes: joke.votes + delta } : joke
+				),
+			},
+			() =>
+				window.localStorage.setItem(
+					'jokes',
+					JSON.stringify(this.state.jokesList)
+				)
+		);
+	};
+
+	handleClick = () => {
+		this.getJokes();
 	};
 
 	render() {
@@ -38,7 +58,9 @@ class JokeList extends React.Component {
 				<div className='sidebar'>
 					<h1 className='title'>Dad Jokes</h1>
 					<img src={image} alt='dad-illustration' />
-					<button className='more-button'>Get new jokes</button>
+					<button className='more-button' onClick={this.handleClick}>
+						Get new jokes
+					</button>
 				</div>
 
 				<div className='joke-list'>

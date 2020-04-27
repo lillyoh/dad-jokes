@@ -8,7 +8,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	width: 30%;
 	text-align: center;
 	border-radius: 5px;
@@ -18,23 +17,27 @@
 }
 
 .joke-list {
-	height: 90%;
+	height: 85%;
 	background: white;
 	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	width: 70%;
-	overflow: scroll;
+	overflow-y: scroll;
 	box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
 }
 
 .title {
 	font-size: 4rem;
 	margin: 2rem;
-	color: rgb(211, 39, 39);
 	font-weight: strong;
-	letter-spacing: 0.2rem;
-	line-height: 4rem;
-	-webkit-text-stroke-color: rgb(255, 242, 242);
-	-webkit-text-stroke-width: 2px;
+	letter-spacing: 0.5rem;
+	line-height: 4.5rem;
+	color: #ffffff;
+	text-shadow: 5px 5px 0px #f79567;
+	/* -webkit-text-stroke-color: rgb(255, 242, 242);
+	-webkit-text-stroke-width: 1px; */
 }
 
 .sidebar img {
