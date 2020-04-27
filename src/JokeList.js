@@ -68,6 +68,11 @@ class JokeList extends React.Component {
 		this.setState({ loading: true }, this.getJokes);
 	};
 
+	handleClearClick = () => {
+		window.localStorage.clear();
+		this.setState({ jokesList: [] }, this.getJokes);
+	};
+
 	render() {
 		if (this.state.loading) {
 			return (
@@ -85,7 +90,7 @@ class JokeList extends React.Component {
 						Add more jokes
 					</button>
 					<button className='more-button' onClick={this.handleClearClick}>
-						Clear settings
+						Refresh jokes
 					</button>
 				</div>
 
