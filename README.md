@@ -3,11 +3,10 @@
 ![gif](https://media.giphy.com/media/fAEUqjlnbmr9K1rB7N/giphy.gif)
 
 ## Summary
-A small fun project to practice calling an external API and reinforce React and CSS fundamentals
+A small fun project to practice calling an external API and reinforce ReactJS and CSS fundamentals
 
 ## Features 
 
-- Built with React and CSS
 - Jokes fetched from external API 
 - View a list of jokes sorted by score
 - Upvote or downvote a joke, jokes and scores saved in localStorage
