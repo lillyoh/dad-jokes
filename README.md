@@ -3,7 +3,9 @@
 ![gif](https://media.giphy.com/media/fAEUqjlnbmr9K1rB7N/giphy.gif)
 
 ## Summary
-A small fun project to practice calling an external API and reinforce ReactJS and CSS fundamentals
+I've been hearing news about this huge boolean. Big if true.
+
+This was a small fun project made with React, CSS, and HTTP requests to an external API. 
 
 ## Features 
 
